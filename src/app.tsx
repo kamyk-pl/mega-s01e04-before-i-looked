@@ -17,7 +17,7 @@ export function createApp(config: RigConfig = loadConfig(), deps: { readNight?: 
   app.get('/', (c) =>
     c.html(
       <Layout title="status" lane={lane()}>
-        <StatusBoard status={readStatus(config)} />
+        <StatusBoard status={readStatus(config)} counts={(n) => read(config.runsDir, n)?.counts ?? null} />
       </Layout>,
     ),
   );
